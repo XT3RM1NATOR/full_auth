@@ -265,7 +265,7 @@ func (uc *UserController) GetProfile(c echo.Context) error {
 		Email:     user.Email,
 		FullName:  user.FullName,
 		Logo:      logo,
-		CreatedAt: user.CreatedAt,
+		CreatedAt: user.CreatedAt.Time(),
 	})
 }
 

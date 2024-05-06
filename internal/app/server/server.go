@@ -3,9 +3,6 @@ package server
 import (
 	"github.com/Point-AI/backend/config"
 	_ "github.com/Point-AI/backend/docs"
-	apiDelivery "github.com/Point-AI/backend/internal/api/delivery"
-	messengerDelivery "github.com/Point-AI/backend/internal/messenger/delivery"
-	systemDelivery "github.com/Point-AI/backend/internal/system/delivery"
 	authDelivery "github.com/Point-AI/backend/internal/user/delivery"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -13,7 +10,6 @@ import (
 	"github.com/sirupsen/logrus"
 	echoSwagger "github.com/swaggo/echo-swagger"
 	"go.mongodb.org/mongo-driver/mongo"
-	"net/http"
 	"os"
 )
 
@@ -40,19 +36,11 @@ func RunHTTPServer(cfg *config.Config, db *mongo.Database, str *minio.Client) {
 		Format: "${time_rfc3339_nano} [${status}] ${method} ${uri} (${latency_human})\n",
 		Output: logger.Out,
 	}))
-	corsConfig := middleware.CORSConfig{
-		AllowOrigins: []string{"*"},
-		AllowMethods: []string{http.MethodGet, http.MethodPost, http.MethodPut, http.MethodDelete, http.MethodOptions},
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-	}
 
-	e.Use(middleware.CORSWithConfig(corsConfig))
+	e.Use(middleware.CORS())
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 
 	authDelivery.RegisterAuthRoutes(e, cfg, db, str)
-	systemDelivery.RegisterSystemRoutes(e, cfg, db, str)
-	apiDelivery.RegisterAPIRoutes(e, cfg, db)
-	messengerDelivery.RegisterMessengerRoutes(e, cfg, db)
 
 	if err := e.Start(cfg.Server.Port); err != nil {
 		panic(err)

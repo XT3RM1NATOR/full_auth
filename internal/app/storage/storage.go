@@ -1,6 +1,7 @@
 package storage
 
 import (
+	"context"
 	"fmt"
 	"github.com/Point-AI/backend/config"
 	"github.com/minio/minio-go/v7"
@@ -17,10 +18,10 @@ func ConnectToStorage(cfg *config.Config) *minio.Client {
 		panic(fmt.Errorf("failed to create MinIO client: %w", err))
 	}
 
-	//err = minioClient.MakeBucket(context.Background(), cfg.MinIo.BucketName, minio.MakeBucketOptions{})
-	//if err != nil {
-	//	panic(fmt.Errorf("failed to create bucket: %w", err))
-	//}
+	//Comment it out once the bucket is created once
+	if err = minioClient.MakeBucket(context.Background(), cfg.MinIo.BucketName, minio.MakeBucketOptions{}); err != nil {
+		panic(fmt.Errorf("failed to create bucket: %w", err))
+	}
 
 	return minioClient
 }

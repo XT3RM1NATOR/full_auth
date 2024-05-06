@@ -40,11 +40,33 @@ definitions:
         description: Optional field for some responses
         type: string
     type: object
+  model.UserProfileResponse:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      logo:
+        items:
+          type: integer
+        type: array
+      name:
+        type: string
+    type: object
   model.UserRequest:
     properties:
       email:
         type: string
       password:
+        type: string
+    type: object
+  model.UserUpdateProfileRequest:
+    properties:
+      logo:
+        items:
+          type: integer
+        type: array
+      name:
         type: string
     type: object
 externalDocs:
@@ -63,7 +85,7 @@ info:
   title: PointAI
   version: "1.0"
 paths:
-  /auth/logout:
+  /user/logout:
     post:
       consumes:
       - application/json
@@ -82,7 +104,7 @@ paths:
       summary: Logout
       tags:
       - Auth
-  /auth/oauth2/google/callback:
+  /user/oauth2/google/callback:
     get:
       consumes:
       - application/json
@@ -111,7 +133,7 @@ paths:
       summary: Google OAuth2 callback
       tags:
       - Auth
-  /auth/oauth2/google/tokens:
+  /user/oauth2/google/tokens:
     get:
       consumes:
       - application/json
@@ -145,7 +167,49 @@ paths:
       summary: Exchange OAuth2 tokens for Google tokens
       tags:
       - Auth
-  /auth/recover:
+  /user/profile:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: user profile data
+          schema:
+            $ref: '#/definitions/model.UserProfileResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+      summary: returns the user profile.
+      tags:
+      - Auth
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Access token renewal request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/model.UserUpdateProfileRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: user profile data
+          schema:
+            $ref: '#/definitions/model.SuccessResponse'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/model.ErrorResponse'
+      summary: updates the user profile.
+      tags:
+      - Auth
+  /user/recover:
     post:
       consumes:
       - application/json
@@ -175,7 +239,7 @@ paths:
       summary: Forgot password
       tags:
       - Auth
-  /auth/renew:
+  /user/renew:
     put:
       consumes:
       - application/json
@@ -205,7 +269,7 @@ paths:
       summary: Renew access token
       tags:
       - Auth
-  /auth/reset:
+  /user/reset:
     post:
       consumes:
       - application/json
@@ -235,7 +299,7 @@ paths:
       summary: Reset password
       tags:
       - Auth
-  /auth/signin:
+  /user/signin:
     post:
       consumes:
       - application/json
@@ -269,7 +333,7 @@ paths:
       summary: User login
       tags:
       - Auth
-  /auth/signup:
+  /user/signup:
     post:
       consumes:
       - application/json
@@ -298,7 +362,7 @@ paths:
             $ref: '#/definitions/model.ErrorResponse'
       tags:
       - Auth
-  /auth/verify/{token}:
+  /user/verify/{token}:
     get:
       consumes:
       - application/json

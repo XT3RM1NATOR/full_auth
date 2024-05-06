@@ -3,11 +3,11 @@ package service
 import (
 	"errors"
 	"fmt"
-	"github.com/Point-AI/backend/config"
-	"github.com/Point-AI/backend/internal/user/domain/entity"
-	_interface "github.com/Point-AI/backend/internal/user/domain/interface"
-	"github.com/Point-AI/backend/internal/user/service/interface"
-	"github.com/Point-AI/backend/utils"
+	"github.com/XT3RM1NATOR/full_auth/config"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/domain/entity"
+	_interface "github.com/XT3RM1NATOR/full_auth/internal/user/domain/interface"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/service/interface"
+	"github.com/XT3RM1NATOR/full_auth/utils"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"log"
 )

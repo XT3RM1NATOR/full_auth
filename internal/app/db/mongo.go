@@ -6,7 +6,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
-	"github.com/Point-AI/backend/config"
+	"github.com/XT3RM1NATOR/full_auth/config"
 )
 
 func ConnectToDB(cfg *config.Config) *mongo.Database {

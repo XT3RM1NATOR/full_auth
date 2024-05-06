@@ -1,9 +1,9 @@
 package server
 
 import (
-	"github.com/Point-AI/backend/config"
-	_ "github.com/Point-AI/backend/docs"
-	authDelivery "github.com/Point-AI/backend/internal/user/delivery"
+	"github.com/XT3RM1NATOR/full_auth/config"
+	_ "github.com/XT3RM1NATOR/full_auth/docs"
+	authDelivery "github.com/XT3RM1NATOR/full_auth/internal/user/delivery"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/minio/minio-go/v7"

@@ -1,4 +1,4 @@
-module github.com/Point-AI/backend
+module github.com/XT3RM1NATOR/full_auth
 
 go 1.22.1
 

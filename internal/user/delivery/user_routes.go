@@ -1,12 +1,12 @@
 package authDelivery
 
 import (
-	"github.com/Point-AI/backend/config"
-	"github.com/Point-AI/backend/internal/user/delivery/controller"
-	"github.com/Point-AI/backend/internal/user/infrastructure/client"
-	"github.com/Point-AI/backend/internal/user/infrastructure/repository"
-	"github.com/Point-AI/backend/internal/user/service"
-	"github.com/Point-AI/backend/middleware"
+	"github.com/XT3RM1NATOR/full_auth/config"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/delivery/controller"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/infrastructure/client"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/infrastructure/repository"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/service"
+	"github.com/XT3RM1NATOR/full_auth/middleware"
 	"github.com/labstack/echo/v4"
 	"github.com/minio/minio-go/v7"
 	"go.mongodb.org/mongo-driver/mongo"

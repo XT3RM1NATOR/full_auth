@@ -2,9 +2,9 @@ package controller
 
 import (
 	"fmt"
-	"github.com/Point-AI/backend/config"
-	"github.com/Point-AI/backend/internal/user/delivery/model"
-	_interface "github.com/Point-AI/backend/internal/user/domain/interface"
+	"github.com/XT3RM1NATOR/full_auth/config"
+	"github.com/XT3RM1NATOR/full_auth/internal/user/delivery/model"
+	_interface "github.com/XT3RM1NATOR/full_auth/internal/user/domain/interface"
 	"github.com/labstack/echo/v4"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"net/http"

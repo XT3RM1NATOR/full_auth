@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"context"
-	"github.com/Point-AI/backend/utils"
+	"github.com/XT3RM1NATOR/full_auth/utils"
 	"github.com/labstack/echo/v4"
 	"net/http"
 	"strings"

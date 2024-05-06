@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"fmt"
-	"github.com/Point-AI/backend/internal/system/service/interface"
+	"github.com/XT3RM1NATOR/full_auth/internal/system/service/interface"
 	"github.com/minio/minio-go/v7"
 	"io"
 )

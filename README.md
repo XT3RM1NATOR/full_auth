@@ -33,7 +33,12 @@ This project provides a full authentication system designed for seamless integra
     - Edit the `.env` file in the root directory. Fill out all the necessary credentials.
 
 
-4. Configure MongoDB and MINIO settings as per your requirements.
+3. Configure MongoDB and MINIO settings as per your requirements.
+4. Start the project:
+    ```bash
+    go build && ./cmd
+    ```
+
 
 ## License
 
